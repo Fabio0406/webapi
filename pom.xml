@@ -74,6 +74,29 @@
 							<goal>report</goal>
 						</goals>
 					</execution>
+
+					<!-- Quality Gate de cobertura: falla si la cobertura de lineas es menor al 60% -->
+					<execution>
+						<id>quality-gate</id>
+						<phase>verify</phase>
+						<goals>
+							<goal>check</goal>
+						</goals>
+						<configuration>
+							<rules>
+								<rule>
+									<element>BUNDLE</element>
+									<limits>
+										<limit>
+											<counter>LINE</counter>
+											<value>COVEREDRATIO</value>
+											<minimum>0.60</minimum>
+										</limit>
+									</limits>
+								</rule>
+							</rules>
+						</configuration>
+					</execution>
 				</executions>
 			</plugin>
 		</plugins>
